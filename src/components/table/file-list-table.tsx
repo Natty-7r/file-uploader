@@ -50,7 +50,7 @@ const FileListTable = () => {
             const fracturedPath = pathname.split(".");
 
             return (
-              <TableRow className="flex justify-between">
+              <TableRow className="flex justify-between" key={url}>
                 <TableCell className=" w-[10%] font-medium">
                   {editing.editing && url == editing.url ? (
                     <Input
