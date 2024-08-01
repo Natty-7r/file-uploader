@@ -1,16 +1,9 @@
 "use client";
 
 import FileListTable from "@/components/table/file-list-table";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getList } from "./api/upload";
 import { useUploadStore } from "@/utils/store/upload";
-
-type BlobObject = {
-  url: string;
-  downloadUrl: string;
-  pathname: string;
-  // Add additional properties here if needed
-};
 
 const FileListPage = () => {
   const { set } = useUploadStore();
@@ -20,7 +13,7 @@ const FileListPage = () => {
     set(listLoaded.blobs as any);
   };
   useEffect(() => {
-    loadList();
+    setTimeout(loadList, 1000);
   }, []);
   return (
     <main className="md:p-8">

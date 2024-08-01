@@ -1,4 +1,3 @@
-import { Table } from "lucide-react";
 import { Skeleton } from "../ui/skeleton";
 import { TableCell, TableHeader, TableRow } from "../ui/table";
 

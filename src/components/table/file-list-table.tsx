@@ -6,21 +6,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Edit2Icon, Trash, X } from "lucide-react";
+import { Edit2Icon, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { DelteUploadDialog } from "../dialog/delete-upload-dialog";
-import { url } from "inspector";
 import { Input } from "../ui/input";
 import { RenameUploadDialog } from "../dialog/rename-upload-dialog";
 import { useUploadStore } from "@/utils/store/upload";
 import { UPloadTableSkeleton } from "../skeleton/upload-table-skeleton";
-
-type BlobObject = {
-  url: string;
-  downloadUrl: string;
-  pathname: string;
-  // Add additional properties here if needed
-};
 
 const FileListTable = () => {
   const { uploads, rename, delete: deleteUpload, fetched } = useUploadStore();

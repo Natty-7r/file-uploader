@@ -12,3 +12,11 @@ type FileUploaderInputProp = {
   inputName: string;
   field: any;
 };
+
+type DelteDialogProp = {
+  url: string;
+  onDelete: Function;
+};
+type RenameDialogProp = {
+  onRename: Function;
+};

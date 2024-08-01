@@ -1,4 +1,3 @@
-import { deleteUpload } from "@/app/api/upload";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,10 +9,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
 import { Save, Trash } from "lucide-react";
 
-export function RenameUploadDialog({ onRename }: { onRename: Function }) {
+export function RenameUploadDialog({ onRename }: RenameDialogProp) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>

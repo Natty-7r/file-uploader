@@ -10,16 +10,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
 
-export function DelteUploadDialog({
-  url,
-  onDelete,
-}: {
-  url: string;
-  onDelete: Function;
-}) {
+export function DelteUploadDialog({ url, onDelete }: DelteDialogProp) {
   const delteUpload = () => {
     deleteUpload(url);
     onDelete();

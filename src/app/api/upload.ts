@@ -1,7 +1,7 @@
 "use server";
+import { BLOB_READ_WRITE_TOKEN } from "@/utils/constants/constant";
 import { put, list, del } from "@vercel/blob";
-const BLOB_READ_WRITE_TOKEN =
-  "vercel_blob_rw_0D64zJ9S8exYiqj5_tXEDJkEjgPheGLbPBtMRCTJ8kj9T3g";
+
 export const uploadFile = async (formDat: any) => {
   const file = formDat.get("file");
   const fileName = `${BLOB_READ_WRITE_TOKEN}.${formDat.get("name")}`;
