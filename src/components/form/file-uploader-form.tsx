@@ -20,11 +20,11 @@ import { useEffect, useState } from "react";
 import useFileUploader from "@/hooks/file/file-uploader";
 import { Input } from "../ui/input";
 import { toast } from "../ui/use-toast";
+import { uploadFile } from "@/app/api/upload";
 
 const FileUploaderForm = () => {
   const router = useRouter();
   const formData = new FormData();
-  const [file, setFileUploaded] = useState<boolean>(false);
   const [fileUploadedErrorCount, setCount] = useState<number>(0);
   const form = useForm<z.infer<typeof FileUploaderSchema>>({
     resolver: zodResolver(FileUploaderSchema),
@@ -33,9 +33,20 @@ const FileUploaderForm = () => {
   const selectedFile = form.watch("file") as any;
   const [fileInfo] = useFileUploader(selectedFile);
 
-  function onSubmit(data: z.infer<typeof FileUploaderSchema>) {
+  async function onSubmit(data: z.infer<typeof FileUploaderSchema>) {
     const uploadedFile = form.getValues("file") as any;
     formData.append("file", uploadedFile);
+    formData.append("name", fileInfo.fullName as string);
+
+    try {
+      const result = await uploadFile(formData);
+      router.push("/");
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        description: error?.message || "Something went wrng unable to upload ",
+      });
+    }
   }
 
   useEffect(() => {
