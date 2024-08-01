@@ -44,4 +44,11 @@ export const useUploadStore = create<UploadStore>()((set) => ({
       };
     });
   },
+  relaod: () => {
+    set((state) => {
+      return {
+        fetched: false,
+      };
+    });
+  },
 }));

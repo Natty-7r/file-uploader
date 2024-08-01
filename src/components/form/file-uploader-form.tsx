@@ -50,7 +50,6 @@ const FileUploaderForm = () => {
   }
 
   useEffect(() => {
-    console.log(fileUploadedErrorCount);
     if (fileUploadedErrorCount > 1 && fileInfo.error)
       toast({
         variant: "destructive",

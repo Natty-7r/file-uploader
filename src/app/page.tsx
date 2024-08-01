@@ -6,13 +6,14 @@ import { getList } from "./api/upload";
 import { useUploadStore } from "@/utils/store/upload";
 
 const FileListPage = () => {
-  const { set } = useUploadStore();
+  const { set, relaod } = useUploadStore();
 
   const loadList = async () => {
     const listLoaded = await getList();
     set(listLoaded.blobs as any);
   };
   useEffect(() => {
+    relaod();
     setTimeout(loadList, 1000);
   }, []);
   return (
