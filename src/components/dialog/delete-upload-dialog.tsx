@@ -34,7 +34,7 @@ export function DelteUploadDialog({ url, onDelete }: DelteDialogProp) {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={(e) => delteUpload()}>
-            Continue
+            Delete anyway
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

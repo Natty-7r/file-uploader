@@ -27,7 +27,7 @@ export function RenameUploadDialog({ onRename }: RenameDialogProp) {
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={(e) => onRename()}>
-            Continue
+            Rename anyway
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
