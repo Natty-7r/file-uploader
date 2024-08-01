@@ -18,13 +18,14 @@ import { FileUploaderSchema } from "@/utils/schemas/file-upload";
 import FileUploaderInput from "../inputs/file-uploader-input";
 import { useEffect, useState } from "react";
 import useFileUploader from "@/hooks/file/file-uploader";
-import { Input } from "../ui/input";
 import { toast } from "../ui/use-toast";
 import { uploadFile } from "@/app/api/upload";
+import { useUploadStore } from "@/utils/store/upload";
 
 const FileUploaderForm = () => {
   const router = useRouter();
   const formData = new FormData();
+  const { relaod } = useUploadStore();
   const [fileUploadedErrorCount, setCount] = useState<number>(0);
   const form = useForm<z.infer<typeof FileUploaderSchema>>({
     resolver: zodResolver(FileUploaderSchema),
@@ -39,7 +40,8 @@ const FileUploaderForm = () => {
     formData.append("name", fileInfo.fullName as string);
 
     try {
-      const result = await uploadFile(formData);
+      await uploadFile(formData);
+      relaod();
       router.push("/");
     } catch (error: any) {
       toast({
